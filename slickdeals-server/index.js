@@ -19,26 +19,4 @@ app.use(morgan("combined"));
 app.get("/", async (req, res) => {
   res.status(200).send(await slickDeals());
 });
-
-app.get("/rev", (req, res) => {
-  fetch(
-    // "https://push.revcontent.com/push/content/?api_key=dd1c5386fe9929c100a7c5cb600dbc66f8070b66&widget_id=118549&device=desktop&country_code=us",
-    "https://push.revcontent.com/push/content/?api_key=yourapikey&widget_id=12345&device=desktop&country_code=us",
-    { timeout: 1800000 }
-  )
-    .then(res => res.json())
-    .then(data => {
-      console.log("Making request...");
-      client.messages
-        .create({
-          body: data.content[0].target_url,
-          to: "+13106484371",
-          from: "+12034875578",
-          mediaUrl: [data.content[0].image]
-        })
-        .then(message => res.status(200).send(data));
-    })
-    .catch(err => console.error(err));
-});
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
