@@ -1,0 +1,8 @@
+<div>
+  <div *ngIf="listOfDeals.length > 0" class="deals-container">
+    <div *ngFor="let item of listOfDeals" class="name-image">
+      <img [src]="item.imagePath" alt="item.name" />
+      <p>{{ item.name }}</p>
+    </div>
+  </div>
+</div>

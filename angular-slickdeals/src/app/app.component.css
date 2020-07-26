@@ -1,0 +1,11 @@
+.deals-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.name-image {
+    flex: 1;
+    padding: 2%;
+}
